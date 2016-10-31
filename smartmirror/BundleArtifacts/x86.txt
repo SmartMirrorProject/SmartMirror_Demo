@@ -1,0 +1,2 @@
+MainPackage=C:\Users\Justin\Documents\Classes\Senior Design 1\Code\SmartMirror\SmartMirror\bin\x86\Release\SmartMirror_1.0.0.0_x86.appx
+SymbolPackage=C:\Users\Justin\Documents\Classes\Senior Design 1\Code\SmartMirror\SmartMirror\AppPackages\SmartMirror_1.0.0.0_Test\SmartMirror_1.0.0.0_x86.appxsym

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar
+  version="1.0"
+  xml:lang="en-US"
+  root="voiceCommands"
+  xmlns="http://www.w3.org/2001/06/grammar"
+  tag-format="semantics/1.0">
+
+  <rule id="voiceCommands">
+    <one-of>
+      <item>
+        <ruleref uri="#onOffCommands"/>
+        <tag>out.displayCommand=rules.onOffCommands;</tag>
+      </item>
+      <item>
+        <ruleref uri="#weatherCommands"/>
+        <tag>out.weatherCommand=rules.weatherCommands;</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <!--   On/Off Commands    -->
+  <rule id="onOffCommands">
+    <item>
+      <item> mirror </item>
+      <item>
+        <ruleref uri="#onOffCommandActions" />
+        <tag> out.cmd=rules.latest(); </tag>
+      </item>
+    </item>
+  </rule>
+
+  <!--  On/Off Actions   -->
+  <rule id="onOffCommandActions">
+    <one-of>
+      <item>
+        on <tag> out="ON"; </tag>
+      </item>
+      <item>
+        off <tag> out="OFF"; </tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <!--    Weather Commands    -->
+  <rule id="weatherCommands">
+    <item>
+      <item> mirror </item>
+      <item>
+        <ruleref uri="#weatherCommandActions" />
+        <tag> out.cmd=rules.latest(); </tag>
+      </item>
+      <item>
+        <ruleref uri="#timeFrameActions" />
+        <tag> out.timeFrame=rules.latest(); </tag>
+      </item>
+      <item>
+        <ruleref uri="#targetActions" />
+        <tag> out.target=rules.latest(); </tag>
+      </item>
+    </item>
+  </rule>
+
+  <!--  Weather Actions  -->
+  <rule id="weatherCommandActions">
+    <one-of>
+      <item>
+        show <tag> out="SHOW"; </tag>
+      </item>
+      <item>
+        hide <tag> out="HIDE"; </tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <!--  Weather Time Frames  -->
+  <rule id="timeFrameActions">
+    <one-of>
+      <item>
+        tomorrow <tag> out="TOMORROW"; </tag>
+      </item>
+      <item>
+        tomorrows <tag> out="TOMORROW"; </tag>
+      </item>
+      <item>
+        today <tag> out="TODAY"; </tag>
+      </item>
+      <item>
+        todays <tag> out="TODAY"; </tag>
+      </item>
+      <item>
+        week <tag> out="WEEK"; </tag>
+      </item>
+      <item>
+        weeks <tag> out="WEEK"; </tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <!--  Target For Command  -->
+  <rule id="targetActions">
+    <one-of>
+      <item>
+        weather <tag> out="WEATHER"; </tag>
+      </item>
+    </one-of>
+  </rule>
+</grammar>
